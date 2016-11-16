@@ -1,6 +1,8 @@
+import * as types from './action-types';
+
 export function addTask(description) {
   return {
-    type: 'ADD_TASK',
+    type: types.ADD_TASK,
     description
   }
 }

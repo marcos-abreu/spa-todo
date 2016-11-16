@@ -1,3 +1,4 @@
+var path = require('path');
 var ExtractText = require('extract-text-webpack-plugin');
 var extractSCSS = new ExtractText('css/styles.css');
 
@@ -25,7 +26,12 @@ var config = {
   },
   plugins: [
     extractSCSS
-  ]
+  ],
+  sassLoader: {
+    includePaths: [
+      path.resolve(__dirname, 'node_modules', 'foundation-sites', 'scss')
+    ]
+  }
 };
 
 module.exports = config;

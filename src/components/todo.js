@@ -8,14 +8,14 @@ import TaskList from './task-list';
 const Todo = function(props) {
   return (
     <div id="todo-page">
-      <header>
+      <header id="app-header" className="row column">
         <h1>TODO App</h1>
       </header>
 
-      <section className="input">
+      <section className="row column input">
         <TaskInput add={props.addTask} />
       </section>
-      <section className="list">
+      <section className="row column list">
         <TaskList tasks={props.tasks} toggle={props.toggleTask} delete={props.deleteTask} />
       </section>
     </div>

@@ -7,13 +7,13 @@ const TaskList = function(props) {
     return (
       <li key={index} onClick={e => props.toggle(task.id)}>
         <TaskItem description={task.description} done={task.done} />
-        <button onClick={e=> { e.stopPropagation(); props.delete(task.id); }}>X</button>
+        <button className="close-button" onClick={e=> { e.stopPropagation(); props.delete(task.id); }}>X</button>
       </li>
     );
   });
 
   return (
-    <ul>
+    <ul className="no-bullet">
       {items}
     </ul>
   );

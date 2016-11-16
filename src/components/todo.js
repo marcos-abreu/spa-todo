@@ -1,28 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import TaskInput from './task-input';
 import TaskList from './task-list';
+import * as actions from '../state/actions';
 
-var tasks = [
-  { id: 0, description: 'some task', done: false },
-  { id: 1, description: 'another task', done: true },
-  { id: 2, description: 'important task', done: false }
-];
-
-const Todo = function() {
+const Todo = function(props) {
   return (
     <div id="todo-page">
       <header>
         <h1>TODO App</h1>
       </header>
+
       <section className="input">
         <TaskInput />
       </section>
       <section className="list">
-        <TaskList tasks={tasks} />
+        <TaskList tasks={props.tasks} />
       </section>
     </div>
   );
 };
 
-export default Todo;
+const stateToProps = function(state) {
+  return {
+    tasks: state.tasks
+  };
+};
+
+export default connect(stateToProps)(Todo);

@@ -9,6 +9,6 @@ export default function reducers(state = initialState, action) {
       }
 
     default:
-      state;
+      return state;
   }
 }

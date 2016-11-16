@@ -7,7 +7,7 @@ const TaskList = function(props) {
     return (
       <li key={index} onClick={e => props.toggle(task.id)}>
         <TaskItem description={task.description} done={task.done} />
-        <button onClick={e=> props.delete(task.id) }>X</button>
+        <button onClick={e=> { e.stopPropagation(); props.delete(task.id); }}>X</button>
       </li>
     );
   });

@@ -1,2 +1,29 @@
 @import 'settings';
 @import 'framework';
+
+body {
+  background-color: $body-background;
+}
+
+#app-header {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: $dark-gray;
+}
+
+#todo-page {
+  .list {
+    li {
+      position: relative;
+      padding: 10px 0 10px 10px;
+
+      border-top: 1px solid $white;
+
+      &:hover {
+        background-color: $light-gray;
+        color: $dark-gray;
+        cursor: pointer;
+      }
+    }
+  }
+}

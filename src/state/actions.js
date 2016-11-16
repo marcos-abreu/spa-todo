@@ -6,3 +6,10 @@ export function addTask(description) {
     description
   }
 }
+
+export function toggleTask(id) {
+  return {
+    type: types.TOGGLE_TASK,
+    id
+  }
+}

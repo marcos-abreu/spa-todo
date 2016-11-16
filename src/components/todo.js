@@ -16,7 +16,7 @@ const Todo = function(props) {
         <TaskInput add={props.addTask} />
       </section>
       <section className="list">
-        <TaskList tasks={props.tasks} toggle={props.toggleTask} />
+        <TaskList tasks={props.tasks} toggle={props.toggleTask} delete={props.deleteTask} />
       </section>
     </div>
   );
@@ -29,6 +29,9 @@ const actionsToProps = function(dispatch) {
     },
     toggleTask: function(id) {
       dispatch(actions.toggleTask(id))
+    },
+    deleteTask: function(id) {
+      dispatch(actions.deleteTask(id))
     }
   };
 };

@@ -6,10 +6,11 @@ import TaskInput from './task-input';
 import TaskList from './task-list';
 
 const Todo = function(props) {
+
   return (
     <div id="todo-page">
       <header id="app-header" className="row column">
-        <h1>TODO App</h1>
+        <h1><img src="../assets/images/todo.png" width="40" alt="TODO App" /> TODO</h1>
       </header>
 
       <section className="row column input">

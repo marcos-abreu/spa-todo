@@ -33,6 +33,10 @@ var config = {
       {
         test: /\.scss$/,
         loader: extractSCSS.extract('style', 'css?sourceMap!sass?sourceMap')
+      },
+      {
+        test: /\.(png|jpgeg|jpg|svg|gif)$/,
+        loaders: ['file?name=img/[name].[md5:hash:8].[ext]', 'image-webpack']
       }
     ]
   },

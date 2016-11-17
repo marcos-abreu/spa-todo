@@ -1,6 +1,18 @@
 var path = require('path');
+var webpack = require('webpack');
 var ExtractText = require('extract-text-webpack-plugin');
+
 var extractSCSS = new ExtractText('css/styles.css');
+
+var plugins = [];
+plugins.push(extractSCSS);
+
+// Always expose NODE_ENV to webpack, you can now use `process.env.NODE_ENV`
+// inside your code for any environment checks; UglifyJS will automatically
+// drop any unreachable code.
+plugins.push(new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+}));
 
 var config = {
   devtool: 'source-map',
@@ -24,9 +36,7 @@ var config = {
       }
     ]
   },
-  plugins: [
-    extractSCSS
-  ],
+  plugins: plugins,
   sassLoader: {
     includePaths: [
       path.resolve(__dirname, 'node_modules', 'foundation-sites', 'scss')

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../state/actions';
+
 const UserProfile = function(props) {
 
   return (
@@ -56,4 +58,12 @@ const stateToProps = function(state) {
   };
 };
 
-export default connect(stateToProps)(UserProfile);
+const actionsToProps = function(dispatch) {
+  return {
+    updateProfile: function(key, value) {
+      return dispatch(actions.updateProfile({key, value}));
+    }
+  };
+};
+
+export default connect(stateToProps, actionsToProps)(UserProfile)

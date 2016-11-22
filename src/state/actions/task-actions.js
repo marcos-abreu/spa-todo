@@ -1,4 +1,4 @@
-import * as types from './action-types';
+import * as types from '../action-types';
 
 export function addTask(description) {
   return {
@@ -18,14 +18,5 @@ export function deleteTask(id) {
   return {
     type: types.DELETE_TASK,
     id
-  };
-}
-
-export function setProfileField(options) {
-  const { key, value } = options;
-  return {
-    type: types.SET_PROFILE_FIELD,
-    key,
-    value
   };
 }

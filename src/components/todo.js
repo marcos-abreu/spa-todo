@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../state/actions';
+import * as actions from '../state/actions/task-actions';
 
 import TaskInput from './task-input';
 import TaskList from './task-list';

@@ -15,7 +15,7 @@ const UserProfile = function(props) {
   const inputList = fields.map(details => {
     return <LabelInput {...details}
               key={details.id}
-              update={props.updateProfile}
+              onChange={props.updateProfile}
               value={props.profile[details.id]} />;
   });
 

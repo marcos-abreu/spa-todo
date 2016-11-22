@@ -4,7 +4,20 @@ import { connect } from 'react-redux';
 import * as actions from '../state/actions';
 import LabelInput from './label-input';
 
+var fields = [
+  { id: 'first-name', label: 'First Name' },
+  { id: 'last-name', label: 'Last Name'},
+  { id: 'phone', label: 'Phone Number'},
+  { id: 'address', label: 'Address' }
+];
+
 const UserProfile = function(props) {
+  const inputList = fields.map(details => {
+    return <LabelInput {...details}
+              key={details.id}
+              update={props.updateProfile}
+              value={props.profile[details.id]} />;
+  });
 
   return (
     <div id="profile-page">
@@ -13,10 +26,7 @@ const UserProfile = function(props) {
       </header>
 
       <form className="row column">
-        <LabelInput id="first-name" label="First Name" update={props.updateProfile} value={props.profile['first-name']} />
-        <LabelInput id="last-name" label="Last Name" update={props.updateProfile} value={props.profile['last-name']} />
-        <LabelInput id="phone" label="Phone Number" update={props.updateProfile} value={props.profile.phone} />
-        <LabelInput id="address" label="Address" update={props.updateProfile} value={props.profile.address} />
+        {inputList}
         <div>
           <button className="button">Update</button>
         </div>

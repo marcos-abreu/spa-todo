@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const UserProfile = function() {
+const UserProfile = function(props) {
 
   return (
     <div id="profile-page">
@@ -13,28 +14,32 @@ const UserProfile = function() {
           <label htmlFor="first-name">First Name</label>
           <input
             id="first-name"
-            type="text" />
+            type="text"
+            value={props.profile['first-name']} />
         </div>
 
         <div>
           <label htmlFor="last-name">Last Name</label>
           <input
             id="last-name"
-            type="text" />
+            type="text"
+            value={props.profile['last-name']} />
         </div>
 
         <div>
           <label htmlFor="phone">Phone Number</label>
           <input
             id="phone"
-            type="text" />
+            type="text"
+            value={props.profile.phone} />
         </div>
 
         <div>
           <label htmlFor="address">Address</label>
           <input
             id="address"
-            type="text" />
+            type="text"
+            value={props.profile.address} />
         </div>
 
         <div>
@@ -45,4 +50,10 @@ const UserProfile = function() {
   )
 };
 
-export default UserProfile;
+const stateToProps = function(state) {
+  return {
+    profile: state.profile
+  };
+};
+
+export default connect(stateToProps)(UserProfile);

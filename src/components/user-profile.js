@@ -17,7 +17,8 @@ const UserProfile = function(props) {
           <input
             id="first-name"
             type="text"
-            value={props.profile['first-name']} />
+            value={props.profile['first-name']}
+            onChange={e => props.updateProfile('first-name', e.target.value)} />
         </div>
 
         <div>
@@ -25,7 +26,8 @@ const UserProfile = function(props) {
           <input
             id="last-name"
             type="text"
-            value={props.profile['last-name']} />
+            value={props.profile['last-name']}
+            onChange={e => props.updateProfile('last-name', e.target.value)} />
         </div>
 
         <div>
@@ -33,7 +35,8 @@ const UserProfile = function(props) {
           <input
             id="phone"
             type="text"
-            value={props.profile.phone} />
+            value={props.profile.phone}
+            onChange={e => props.updateProfile('phone', e.target.value)} />
         </div>
 
         <div>
@@ -41,7 +44,8 @@ const UserProfile = function(props) {
           <input
             id="address"
             type="text"
-            value={props.profile.address} />
+            value={props.profile.address}
+            onChange={e => props.updateProfile('address', e.target.value)} />
         </div>
 
         <div>

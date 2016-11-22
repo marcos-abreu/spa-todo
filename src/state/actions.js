@@ -21,10 +21,10 @@ export function deleteTask(id) {
   };
 }
 
-export function updateProfile(options) {
+export function setProfileField(options) {
   const { key, value } = options;
   return {
-    type: types.UPDATE_PROFILE,
+    type: types.SET_PROFILE_FIELD,
     key,
     value
   };

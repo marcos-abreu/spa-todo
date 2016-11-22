@@ -31,7 +31,7 @@ export default function reducers(state = initialState, action) {
         tasks: state.tasks.concat([{ id: state.tasks.length, description: action.description, done: false }])
       };
 
-    case types.UPDATE_PROFILE:
+    case types.SET_PROFILE_FIELD:
       const newProfile = Object.assign({}, state.profile);
       newProfile[action.key] = action.value;
       return {

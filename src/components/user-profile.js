@@ -15,7 +15,7 @@ const UserProfile = function(props) {
   const inputList = fields.map(details => {
     return <LabelInput {...details}
               key={details.id}
-              onChange={props.updateProfile}
+              onChange={props.setProfileField}
               value={props.profile[details.id]} />;
   });
 
@@ -43,8 +43,8 @@ const stateToProps = function(state) {
 
 const actionsToProps = function(dispatch) {
   return {
-    updateProfile: function(key, value) {
-      return dispatch(actions.updateProfile({key, value}));
+    setProfileField: function(key, value) {
+      return dispatch(actions.setProfileField({key, value}));
     }
   };
 };

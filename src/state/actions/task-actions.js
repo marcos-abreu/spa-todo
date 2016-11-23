@@ -20,3 +20,18 @@ export function deleteTask(id) {
     id
   };
 }
+
+export function fetchTasks() {
+  return function(dispatch, getState) {
+    fetch('http://localhost:3000/todos')
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(tasks) {
+      return dispatch({
+        type: types.FETCH_TASKS,
+        tasks
+      });
+    });
+  };
+}

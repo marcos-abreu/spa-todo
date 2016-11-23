@@ -11,8 +11,24 @@ export function setProfileField(options) {
 }
 
 export function saveProfile() {
-  return {
-    type: types.SAVE_PROFILE,
-    // profile
+  return function(dispatch, getState) {
+    const state = getState();
+
+    return fetch('http://localhost:3000/profile', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(state.profile)
+    })
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(profile) {
+      return dispatch({
+        type: types.SAVE_PROFILE,
+        profile
+      });
+    });
   };
 }

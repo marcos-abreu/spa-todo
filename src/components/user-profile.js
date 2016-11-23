@@ -12,6 +12,10 @@ var fields = [
 ];
 
 class UserProfile extends Component {
+  componentDidMount() {
+    this.props.fetchProfile();
+  }
+
   handleClick = e => {
     e.stopPropagation();
     e.preventDefault();
@@ -58,6 +62,9 @@ const actionsToProps = function(dispatch) {
     saveProfile: function() {
       return dispatch(actions.saveProfile());
     },
+    fetchProfile: function() {
+      return dispatch(actions.fetchProfile());
+    }
   };
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../state/actions/profile-actions';
@@ -12,6 +12,13 @@ var fields = [
 ];
 
 const UserProfile = function(props) {
+  const handleClick = e => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    props.saveProfile();
+  };
+
   const inputList = fields.map(details => {
     return <LabelInput {...details}
               key={details.id}
@@ -28,12 +35,12 @@ const UserProfile = function(props) {
       <form className="row column">
         {inputList}
         <div>
-          <button className="button">Update</button>
+          <button onClick={handleClick} className="button">Update</button>
         </div>
       </form>
     </div>
-  )
-};
+  );
+}
 
 const stateToProps = function(state) {
   return {
@@ -45,7 +52,10 @@ const actionsToProps = function(dispatch) {
   return {
     setProfileField: function(key, value) {
       return dispatch(actions.setProfileField({key, value}));
-    }
+    },
+    saveProfile: function() {
+      return dispatch(actions.saveProfile());
+    },
   };
 };
 

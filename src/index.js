@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import UserProfile from './components/user-profile';
+import Todo from './components/todo';
 import configureStore from './state/configure-store';
 const store = configureStore();
 
 render(
   <Provider store={store}>
-    <UserProfile />
+    <Todo />
   </Provider>
 , document.getElementById('app'));

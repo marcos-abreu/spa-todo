@@ -9,3 +9,10 @@ export function setProfileField(options) {
     value
   };
 }
+
+export function saveProfile() {
+  return {
+    type: types.SAVE_PROFILE,
+    // profile
+  };
+}

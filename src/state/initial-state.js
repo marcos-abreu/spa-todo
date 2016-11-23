@@ -1,9 +1,9 @@
 export default {
   profile: {
-    'first-name': 'Marcos',
-    'last-name': 'Abreu',
-    'phone': '416555555555',
-    'address': 'some address'
+    'first-name': '',
+    'last-name': '',
+    'phone': '',
+    'address': ''
   },
   tasks: [
     { id: 0, description: 'some task', done: false },

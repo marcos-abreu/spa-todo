@@ -6,6 +6,10 @@ import TaskInput from './task-input';
 import TaskList from './task-list';
 
 class Todo extends Component {
+  componentDidMount() {
+    this.props.fetchTasks();
+  }
+
   render() {
     return (
       <div id="todo-page">
@@ -34,6 +38,9 @@ const actionsToProps = function(dispatch) {
     },
     deleteTask: function(id) {
       dispatch(actions.deleteTask(id));
+    },
+    fetchTasks: function() {
+      dispatch(actions.fetchTasks());
     }
   };
 };

@@ -12,14 +12,20 @@ var fields = [
 ];
 
 class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    this.props.saveProfile();
+  }
+
   render() {
-    const handleClick = e => {
-      e.stopPropagation();
-      e.preventDefault();
-
-      this.props.saveProfile();
-    };
-
     const inputList = fields.map(details => {
       return <LabelInput {...details}
                 key={details.id}
@@ -36,7 +42,7 @@ class UserProfile extends Component {
         <form className="row column">
           {inputList}
           <div>
-            <button onClick={handleClick} className="button">Update</button>
+            <button onClick={this.handleClick} className="button">Update</button>
           </div>
         </form>
       </div>

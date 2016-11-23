@@ -32,3 +32,18 @@ export function saveProfile() {
     });
   };
 }
+
+export function fetchProfile() {
+  return function(dispatch, getState) {
+    return fetch('http://localhost:3000/profile')
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(profile) {
+      return dispatch({
+        type: types.FETCH_PROFILE,
+        profile
+      });
+    });
+  };
+}

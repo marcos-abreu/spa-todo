@@ -20,3 +20,12 @@ export function deleteTask(id) {
     id
   };
 }
+
+export function updateProfile(options) {
+  const { key, value } = options;
+  return {
+    type: types.UPDATE_PROFILE,
+    key,
+    value
+  };
+}

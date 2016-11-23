@@ -11,35 +11,37 @@ var fields = [
   { id: 'address', label: 'Address' }
 ];
 
-const UserProfile = function(props) {
-  const handleClick = e => {
-    e.stopPropagation();
-    e.preventDefault();
+class UserProfile extends Component {
+  render() {
+    const handleClick = e => {
+      e.stopPropagation();
+      e.preventDefault();
 
-    props.saveProfile();
-  };
+      this.props.saveProfile();
+    };
 
-  const inputList = fields.map(details => {
-    return <LabelInput {...details}
-              key={details.id}
-              onChange={props.setProfileField}
-              value={props.profile[details.id]} />;
-  });
+    const inputList = fields.map(details => {
+      return <LabelInput {...details}
+                key={details.id}
+                onChange={this.props.setProfileField}
+                value={this.props.profile[details.id]} />;
+    });
 
-  return (
-    <div id="profile-page">
-      <header className="row column">
-        <h2>User Profile</h2>
-      </header>
+    return (
+      <div id="profile-page">
+        <header className="row column">
+          <h2>User Profile</h2>
+        </header>
 
-      <form className="row column">
-        {inputList}
-        <div>
-          <button onClick={handleClick} className="button">Update</button>
-        </div>
-      </form>
-    </div>
-  );
+        <form className="row column">
+          {inputList}
+          <div>
+            <button onClick={handleClick} className="button">Update</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 const stateToProps = function(state) {

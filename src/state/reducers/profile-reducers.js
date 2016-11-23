@@ -7,6 +7,8 @@ export default function reducers(state = initialState.profile, action) {
       const newProfile = Object.assign({}, state);
       newProfile[action.key] = action.value;
       return newProfile;
+    case types.SAVE_PROFILE:
+      return action.profile;
 
     default:
       return state;

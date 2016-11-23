@@ -1,37 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../state/actions';
+import * as actions from '../state/actions/task-actions';
 
 import TaskInput from './task-input';
 import TaskList from './task-list';
 
-const Todo = function(props) {
-  return (
-    <div id="todo-page">
-      <header id="app-header" className="row column">
-        <h1>TODO App</h1>
-      </header>
+class Todo extends Component {
+  componentDidMount() {
+    this.props.fetchTasks();
+  }
 
-      <section className="row column input">
-        <TaskInput add={props.addTask} />
-      </section>
-      <section className="row column list">
-        <TaskList tasks={props.tasks} toggle={props.toggleTask} delete={props.deleteTask} />
-      </section>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div id="todo-page">
+        <header id="app-header" className="row column">
+          <h1>TODO App</h1>
+        </header>
+
+        <section className="row column input">
+          <TaskInput add={this.props.addTask} />
+        </section>
+        <section className="row column list">
+          <TaskList tasks={this.props.tasks} toggle={this.props.toggleTask} delete={this.props.deleteTask} />
+        </section>
+      </div>
+    );
+  }
+}
 
 const actionsToProps = function(dispatch) {
   return {
     addTask: function(description) {
-      dispatch(actions.addTask(description))
+      dispatch(actions.addTask(description));
     },
     toggleTask: function(id) {
-      dispatch(actions.toggleTask(id))
+      dispatch(actions.toggleTask(id));
     },
     deleteTask: function(id) {
-      dispatch(actions.deleteTask(id))
+      dispatch(actions.deleteTask(id));
+    },
+    fetchTasks: function() {
+      dispatch(actions.fetchTasks());
     }
   };
 };

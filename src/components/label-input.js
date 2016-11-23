@@ -8,7 +8,7 @@ const LabelInput = function(props) {
         id={props.id}
         type="text"
         value={props.value}
-        onChange={e => props.update(props.id, e.target.value)} />
+        onChange={e => props.onChange(props.id, e.target.value)} />
     </div>
   );
 };

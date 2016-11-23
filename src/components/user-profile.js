@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../state/actions';
+import * as actions from '../state/actions/profile-actions';
 import LabelInput from './label-input';
 
 var fields = [
@@ -11,29 +11,42 @@ var fields = [
   { id: 'address', label: 'Address' }
 ];
 
-const UserProfile = function(props) {
-  const inputList = fields.map(details => {
-    return <LabelInput {...details}
-              key={details.id}
-              update={props.updateProfile}
-              value={props.profile[details.id]} />;
-  });
+class UserProfile extends Component {
+  componentDidMount() {
+    this.props.fetchProfile();
+  }
 
-  return (
-    <div id="profile-page">
-      <header className="row column">
-        <h2>User Profile</h2>
-      </header>
+  handleClick = e => {
+    e.stopPropagation();
+    e.preventDefault();
 
-      <form className="row column">
-        {inputList}
-        <div>
-          <button className="button">Update</button>
-        </div>
-      </form>
-    </div>
-  )
-};
+    this.props.saveProfile();
+  }
+
+  render() {
+    const inputList = fields.map(details => {
+      return <LabelInput {...details}
+                key={details.id}
+                onChange={this.props.setProfileField}
+                value={this.props.profile[details.id]} />;
+    });
+
+    return (
+      <div id="profile-page">
+        <header className="row column">
+          <h2>User Profile</h2>
+        </header>
+
+        <form className="row column">
+          {inputList}
+          <div>
+            <button onClick={this.handleClick} className="button">Update</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
 
 const stateToProps = function(state) {
   return {
@@ -43,8 +56,14 @@ const stateToProps = function(state) {
 
 const actionsToProps = function(dispatch) {
   return {
-    updateProfile: function(key, value) {
-      return dispatch(actions.updateProfile({key, value}));
+    setProfileField: function(key, value) {
+      return dispatch(actions.setProfileField({key, value}));
+    },
+    saveProfile: function() {
+      return dispatch(actions.saveProfile());
+    },
+    fetchProfile: function() {
+      return dispatch(actions.fetchProfile());
     }
   };
 };

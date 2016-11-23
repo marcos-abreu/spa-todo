@@ -1,4 +1,5 @@
 import * as types from '../action-types';
+import * as api from '../../lib/api';
 
 export function setProfileField(options) {
   const { key, value } = options;
@@ -14,16 +15,7 @@ export function saveProfile() {
   return function(dispatch, getState) {
     const state = getState();
 
-    return fetch('http://localhost:3000/profile', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(state.profile)
-    })
-    .then(function(res) {
-      return res.json();
-    })
+    api.saveProfile(state.profile)
     .then(function(profile) {
       return dispatch({
         type: types.SAVE_PROFILE,
@@ -35,10 +27,7 @@ export function saveProfile() {
 
 export function fetchProfile() {
   return function(dispatch, getState) {
-    return fetch('http://localhost:3000/profile')
-    .then(function(res) {
-      return res.json();
-    })
+    api.fetchProfile()
     .then(function(profile) {
       return dispatch({
         type: types.FETCH_PROFILE,

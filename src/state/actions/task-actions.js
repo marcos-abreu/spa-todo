@@ -1,17 +1,9 @@
 import * as types from '../action-types';
+import * as api from '../../lib/api';
 
 export function addTask(description) {
   return function(dispatch, getState) {
-    return fetch('http://localhost:3000/todos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({description: description})
-    })
-    .then(function(res) {
-      return res.json();
-    })
+    api.addTask(description)
     .then(function(task) {
       return dispatch({
         type: types.ADD_TASK,
@@ -37,10 +29,7 @@ export function deleteTask(id) {
 
 export function fetchTasks() {
   return function(dispatch, getState) {
-    fetch('http://localhost:3000/todos')
-    .then(function(res) {
-      return res.json();
-    })
+    return api.fetchTasks()
     .then(function(tasks) {
       return dispatch({
         type: types.FETCH_TASKS,

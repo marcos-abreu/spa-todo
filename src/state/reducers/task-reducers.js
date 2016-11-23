@@ -26,6 +26,9 @@ export default function reducers(state = initialState.tasks, action) {
         done: false
       }]);
 
+    case types.FETCH_TASKS:
+      return action.tasks;
+
     default:
       return state;
   }

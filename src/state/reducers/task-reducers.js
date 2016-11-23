@@ -20,11 +20,7 @@ export default function reducers(state = initialState.tasks, action) {
       });
 
     case types.ADD_TASK:
-      return state.concat([{
-        id: state.length,
-        description: action.description,
-        done: false
-      }]);
+      return state.concat([action.task]);
 
     case types.FETCH_TASKS:
       return action.tasks;

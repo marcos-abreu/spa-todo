@@ -21,9 +21,14 @@ export function toggleTask(id) {
 }
 
 export function deleteTask(id) {
-  return {
-    type: types.DELETE_TASK,
-    id
+  return function(dispatch, getState) {
+    api.removeTask(id)
+    .then(function(id) {
+      return dispatch({
+        type: types.DELETE_TASK,
+        id
+      });
+    });
   };
 }
 

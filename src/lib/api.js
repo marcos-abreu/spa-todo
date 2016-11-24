@@ -52,3 +52,16 @@ export const removeTask = function(id) {
     return id;
   });
 }
+
+export const toggleTask = function(id, currentlyDone) {
+  return fetch(`http://localhost:3000/todos/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ done: !currentlyDone })
+  })
+  .then(function(task) {
+    return task.json();
+  });
+}

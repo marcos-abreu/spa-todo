@@ -37,3 +37,18 @@ export const addTask = function(description) {
     return res.json();
   });
 }
+
+export const removeTask = function(id) {
+  return fetch(`http://localhost:3000/todos/${id}`, {
+    method: 'DELETE'
+  })
+  .then(function(res) {
+    // in real apps you would have to check errors returned by the server
+    // as well as requests that werent able to reach the server
+
+    // a delete request won't return anything in case of success. And since
+    // we are being 'optimist' and only account for success we will only return
+    // the id of the deleted task
+    return id;
+  });
+}

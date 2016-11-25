@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import * as actions from '../state/actions/task-actions';
 import TaskInput from './task-input';
@@ -14,16 +13,6 @@ class Todo extends Component {
   render() {
     return (
       <div id="todo-page">
-        <header id="app-header" className="row column">
-          <h1>TODO App</h1>
-          <nav>
-            <ul className="menu">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="user-profile">User Profile</Link></li>
-            </ul>
-          </nav>
-        </header>
-
         <section className="row column input">
           <TaskInput add={this.props.addTask} />
         </section>

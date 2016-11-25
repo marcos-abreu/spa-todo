@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../state/actions/task-actions';
+import { browserHistory } from 'react-router';
 
+import * as actions from '../state/actions/task-actions';
 import TaskInput from './task-input';
 import TaskList from './task-list';
 
@@ -10,11 +11,24 @@ class Todo extends Component {
     this.props.fetchTasks();
   }
 
+  handleMenuClick = (e, path) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    browserHistory.push(path);
+  }
+
   render() {
     return (
       <div id="todo-page">
         <header id="app-header" className="row column">
           <h1>TODO App</h1>
+          <nav>
+            <ul className="menu">
+              <li><a href="" onClick={e => this.handleMenuClick(e, '/')}>Home</a></li>
+              <li><a href="" onClick={e => this.handleMenuClick(e, '/user-profile')}>User Profile</a></li>
+            </ul>
+          </nav>
         </header>
 
         <section className="row column input">

@@ -6,16 +6,22 @@ import * as actions from '../state/actions/task-actions';
 import TaskInput from './task-input';
 import TaskList from './task-list';
 
-class Todo extends Component {
-  componentDidMount() {
-    this.props.fetchTasks();
-  }
-
-  handleMenuClick = (e, path) => {
+const Link = props => {
+  const handleClick = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    browserHistory.push(path);
+    browserHistory.push(props.to);
+  };
+
+  return (
+    <a href="" onClick={handleClick}>{props.children}</a>
+  );
+};
+
+class Todo extends Component {
+  componentDidMount() {
+    this.props.fetchTasks();
   }
 
   render() {
@@ -25,8 +31,8 @@ class Todo extends Component {
           <h1>TODO App</h1>
           <nav>
             <ul className="menu">
-              <li><a href="" onClick={e => this.handleMenuClick(e, '/')}>Home</a></li>
-              <li><a href="" onClick={e => this.handleMenuClick(e, '/user-profile')}>User Profile</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="user-profile">User Profile</Link></li>
             </ul>
           </nav>
         </header>

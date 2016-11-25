@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 import * as actions from '../state/actions/task-actions';
 import TaskInput from './task-input';
 import TaskList from './task-list';
-
-const Link = props => {
-  const handleClick = e => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    browserHistory.push(props.to);
-  };
-
-  return (
-    <a href="" onClick={handleClick}>{props.children}</a>
-  );
-};
 
 class Todo extends Component {
   componentDidMount() {

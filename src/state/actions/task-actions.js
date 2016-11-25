@@ -14,16 +14,34 @@ export function addTask(description) {
 }
 
 export function toggleTask(id) {
-  return {
-    type: types.TOGGLE_TASK,
-    id
+  return function(dispatch, getState) {
+    const state = getState();
+    const task = state.tasks.find(task => task.id === id);
+
+    // just double check that a task exists with the specified id
+    if (!task) {
+      return;
+    }
+
+    api.toggleTask(id, task.done)
+    .then(function(task) {
+      return dispatch({
+        type: types.TOGGLE_TASK,
+        id
+      });
+    });
   };
 }
 
 export function deleteTask(id) {
-  return {
-    type: types.DELETE_TASK,
-    id
+  return function(dispatch, getState) {
+    api.removeTask(id)
+    .then(function(id) {
+      return dispatch({
+        type: types.DELETE_TASK,
+        id
+      });
+    });
   };
 }
 

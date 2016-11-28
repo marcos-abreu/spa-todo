@@ -33,10 +33,6 @@ class UserProfile extends Component {
 
     return (
       <div id="profile-page">
-        <header className="row column">
-          <h2>User Profile</h2>
-        </header>
-
         <form className="row column">
           {inputList}
           <div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../state/actions/task-actions';
-import TaskInput from './task-input';
-import TaskList from './task-list';
+import TaskInput from '../components/task-input';
+import TaskList from '../components/task-list';
 
 class Todo extends Component {
   componentDidMount() {

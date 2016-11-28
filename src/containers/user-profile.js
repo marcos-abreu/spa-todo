@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../state/actions/profile-actions';
-import LabelInput from './label-input';
+import LabelInput from '../components/label-input';
 
 var fields = [
   { id: 'first-name', label: 'First Name' },

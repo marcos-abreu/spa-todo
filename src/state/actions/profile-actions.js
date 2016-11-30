@@ -15,7 +15,7 @@ export function saveProfile() {
   return function(dispatch, getState) {
     const state = getState();
 
-    api.saveProfile(state.profile)
+    return api.saveProfile(state.profile)
     .then(function(profile) {
       return dispatch({
         type: types.SAVE_PROFILE,
@@ -27,7 +27,7 @@ export function saveProfile() {
 
 export function fetchProfile() {
   return function(dispatch, getState) {
-    api.fetchProfile()
+    return api.fetchProfile()
     .then(function(profile) {
       return dispatch({
         type: types.FETCH_PROFILE,

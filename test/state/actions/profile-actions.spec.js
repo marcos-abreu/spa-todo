@@ -66,7 +66,7 @@ describe('User Profile Actions', () => {
       const resultFuncton = saveProfile();
       resultFuncton(dispatchStub, getStateStub);
 
-      expect(saveProfileStub.calledOnce).to.be.true;
+      expect(saveProfileStub).to.have.been.calledOnce;
     });
 
     describe('after synching with the server', () => {

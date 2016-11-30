@@ -10,7 +10,7 @@
     "build": "npm run cleanup && npm run build:html && npm run build:js",
     "serve:dev": "webpack-dev-server --inline --content-base dist/",
     "dev": "npm run cleanup && npm run build:html && npm run serve:dev",
-    "test": "mocha --colors --recursive './test/**/*.spec.js'"
+    "test": "mocha --colors --compilers js:babel-register --recursive './test/**/*.spec.js'"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
+    "babel-register": "^6.18.0",
     "chai": "^3.5.0",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",

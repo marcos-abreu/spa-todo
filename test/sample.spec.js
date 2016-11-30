@@ -1,7 +1,7 @@
-var expect = require('chai').expect;
+import { expect } from 'chai';
 
-describe('Unit Tests', function() {
-  it('should succeed when given reasonable expectations', function() {
+describe('Unit Tests', () => {
+  it('should succeed when given reasonable expectations', () => {
     expect(true).to.be.true;
   });
 });

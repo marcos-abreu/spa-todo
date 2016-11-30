@@ -17,6 +17,7 @@
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
+    "babel-plugin-rewire": "^1.0.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
@@ -36,6 +37,8 @@
     "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"

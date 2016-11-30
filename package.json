@@ -10,7 +10,7 @@
     "build": "npm run cleanup && npm run build:html && npm run build:js",
     "serve:dev": "webpack-dev-server --inline --content-base dist/",
     "dev": "npm run cleanup && npm run build:html && npm run serve:dev",
-    "test": "mocha --colors --compilers js:babel-register --recursive './test/**/*.spec.js'"
+    "test": "NODE_ENV=test mocha --colors --compilers js:babel-register --recursive './test/**/*.spec.js'"
   },
   "author": "",
   "license": "ISC",
